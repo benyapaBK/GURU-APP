@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRURU MUSEUM // Executive Presentation</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 95,27 95,73 50,95 5,73 5,27' fill='%230B0B0F' stroke='%23D7FF3A' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23D7FF3A'/%3E%3Cpath d='M25,50 L75,50 M50,25 L50,75' stroke='%23FF5A1F' stroke-width='2' stroke-dasharray='4,4'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Main Presentation Web App Container -->
+  <div id="presentation-app">
+    <!-- Scanline Texture Layer -->
+    <div class="scanline-overlay"></div>
+
+    <!-- Top HUD Navigation Header -->
+    <header class="app-header">
+      <!-- Brand & Monogram Logo -->
+      <div class="brand-wrapper" onclick="window.goToSlide(0)">
+        <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Hexagonal Archaeology Framework -->
+          <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="#2C2C3A" stroke-width="2" fill="#17171F" />
+          <polygon points="50,14 82,32 82,68 50,86 18,68 18,32" stroke="#D7FF3A" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6"/>
+          
+          <!-- Stylized G and M with Node Connections -->
+          <path d="M42 32 H28 V68 H48 V50 H36" stroke="#D7FF3A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M52 68 V32 L66 52 L80 32 V68" stroke="#FF5A1F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          
+          <!-- Constellation Nodes -->
+          <circle cx="28" cy="32" r="3" fill="#D7FF3A"/>
+          <circle cx="48" cy="50" r="3" fill="#2EE6FF"/>
+          <circle cx="66" cy="52" r="3.5" fill="#D7FF3A"/>
+          <circle cx="80" cy="32" r="3" fill="#8C6BFF"/>
+          <circle cx="50" cy="86" r="2.5" fill="#FF5A1F"/>
+        </svg>
+        <div class="brand-title-group">
+          <div class="brand-name">
+            GRURU MUSEUM
+            <span style="font-size: 10px; padding: 2px 6px; background: rgba(215,255,58,0.15); border: 1px solid var(--gr-lime); color: var(--gr-lime); font-family: var(--font-mono);">EXECUTIVE</span>
+          </div>
+          <div class="brand-tagline">Future Archaeology // Digital Lab</div>
+        </div>
+      </div>
+
+      <!-- Center Progress Indicator -->
+      <div class="header-center-info">
+        <div class="slide-counter-badge" id="slide-counter">01 / 12</div>
+        <div class="slide-current-title-mini" id="slide-title-mini">วิสัยทัศน์ & แก่นโปรเจกต์</div>
+      </div>
+
+      <!-- Right Action Controls -->
+      <div class="header-actions">
+        <button class="hud-btn" id="btn-sound" title="Toggle UI Sound Synthesizer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          SFX ON
+        </button>
+        <button class="hud-btn" id="btn-theme" title="Toggle Dark/Light Mode">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          THEME
+        </button>
+        <button class="hud-btn" id="btn-overview" title="Toggle Slide Overview (Esc or O)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          OVERVIEW
+        </button>
+        <button class="hud-btn" id="btn-notes" title="Toggle Executive Talking Points (N)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          NOTES
+        </button>
+        <button class="hud-btn" id="btn-fullscreen" title="Toggle Fullscreen (F)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Presentation Viewport -->
+    <main class="deck-viewport">
+
+      <!-- ====================================================================
+           SLIDE 01: COVER & EXECUTIVE VISION
+           ==================================================================== -->
+      <section class="slide active" id="slide-0">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-001 // CONCEPT CORE</div>
+          <div class="slide-category-tag" style="background: rgba(215,255,58,0.12); color: var(--gr-lime); border: 1px solid var(--gr-lime);">
+            HALL 00 // EXECUTIVE BRIEFING
+          </div>
+        </div>
+
+        <div class="hero-layout">
+          <div class="hero-content">
+            <div class="hero-badge-row">
+              <span class="specimen-label" style="background: rgba(255,90,31,0.15); border-color: var(--gr-ember); color: var(--gr-ember);">
+                NEW THEME 2026
+              </span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-fog);">
+                PROPOSAL FOR BOARD OF DIRECTORS
+              </span>
+            </div>
+
+            <h1 class="hero-main-title">
+              GRURU <span class="gradient-text">MUSEUM</span>
+            </h1>
+
+            <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--gr-lime); margin-bottom: 8px;">
+              “New Knowledge. New Storytelling. Built for Everyday Living.”
+            </div>
+
+            <div class="takeaway-3sec-box">
+              <div class="takeaway-icon">⚡</div>
+              <div class="takeaway-content">
+                <div class="takeaway-heading">3-Second Executive Summary</div>
+                <div class="takeaway-text">
+                  ปฏิวัติพิพิธภัณฑ์ดิจิทัลสู่คอนเซปต์ <strong>Future Archaeology</strong> (ห้องแล็บของนักโบราณคดีจากอนาคต) เปลี่ยนคลังความรู้ที่ซ่อนอยู่ในอดีตให้กลายเป็น Knowledge Graph และเรื่องเล่าที่คนรุ่นใหม่นำไปปรับใช้ในชีวิตประจำวันได้ทันที
+                </div>
+              </div>
+            </div>
+
+            <p class="hero-description">
+              การปะทะกันอย่างลงตัวของความนิ่งเรียบแบบ <em>Modern Art Gallery</em> กับความล้ำหน้าแบบ <em>Sci-Fi Research Lab</em> พร้อม 2 นวัตกรรมหลัก: <strong>Data Booming</strong> (ระเบิดความรู้แบบนำทาง) และ <strong>Interactive Knowledge Graph</strong> (แผนที่ความรู้ฉบับเต็ม)
+            </p>
+
+            <div style="display: flex; gap: 14px; margin-top: 10px;">
+              <button class="gr-btn-primary" onclick="window.goToSlide(1)">
+                เริ่มขุดค้นข้อมูล // START EXCAVATION
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+              <button class="gr-btn-secondary" onclick="window.goToSlide(6)">
+                ทดสอบ DATA BOOMING
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Visual: Future Archaeology Interior -->
+          <div class="hero-visual-card gr-chamfer">
+            <img src="assets/images/future_archaeology_lab.jpg" alt="Future Archaeology Museum Interior" class="hero-visual-img">
+            <div class="hero-visual-overlay">
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">SPECIMEN VIEW // HALL 01</div>
+                <div style="font-size: 12px; color: #FFF;">Modern Art Gallery × Sci-Fi Lab Environment</div>
+              </div>
+              <button class="hud-btn" onclick="document.getElementById('kg-active-img').src='assets/images/future_archaeology_lab.jpg'; document.getElementById('lightbox-img').src='assets/images/future_archaeology_lab.jpg'; document.getElementById('image-lightbox').classList.add('open');">
+                ZOOM HUD
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 02: PROBLEM & MARKET GAP
+           ==================================================================== -->
+      <section class="slide" id="slide-1">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-002 // MARKET MATRIX</div>
+          <div class="slide-category-tag" style="background: rgba(255,90,31,0.12); color: var(--gr-ember); border: 1px solid var(--gr-ember);">
+            STRATEGIC GAP
+          </div>
+        </div>
+
+        <h2 class="slide-title">น้ำท่วมทุ่งแต่ขาดน้ำดื่ม: ปัญหาสารสนเทศในยุคดิจิทัล</h2>
+        <div class="slide-subtitle">ทำไมผู้คนในยุคข้อมูลล้นทะลัก จึงยังโหยหาความรู้ที่มีหลักฐานและนำไปใช้จริงได้?</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              คนวัย 22–40 ปี ติดอยู่ตรงกลางระหว่าง <strong>“สารานุกรมที่แห้งและยาวเกินไป”</strong> กับ <strong>“คลิปสั้นที่ฉาบฉวยไร้แหล่งอ้างอิง”</strong> — GRURU สร้างพื้นที่ใหม่ที่สนุก น่าติดตาม มีหลักฐานชัดเจน และอ่านจบได้ใน 3–5 นาที
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-card gr-chamfer" style="border-top: 3px solid #8A8A9E;">
+            <div class="problem-card-badge" style="background: rgba(138,138,158,0.2); color: #FFF;">
+              LEGACY ENCYCLOPEDIA
+            </div>
+            <div class="problem-card-title">สารานุกรม & วิกิพีเดียดั้งเดิม</div>
+            <div class="problem-metric" style="color: #8A8A9E;">แห้งแล้ง</div>
+            <p style="font-size: 13px; color: var(--gr-fog);">ตัวอักษรหนาแน่น เล่าแบบเชิงเส้น ขาดการเชื่อมโยงเชิงภาพ ผู้ใช้รู้สึกเหมือนกำลังถูกบังคับให้นั่งเรียน</p>
+            <ul class="problem-list">
+              <li>ใช้เวลาอ่านนานเกิน Attention Span สมัยใหม่</li>
+              <li>ไม่บอกวิธีนำไปปรับใช้กับชีวิตประจำวัน</li>
+              <li>สถาปัตยกรรมตัวอักษรไม่เป็นมิตรกับมือถือ</li>
+            </ul>
+          </div>
+
+          <div class="problem-card gr-chamfer" style="border-top: 3px solid var(--gr-alert);">
+            <div class="problem-card-badge" style="background: rgba(255,59,78,0.2); color: var(--gr-alert);">
+              SHORT-FORM CLIPS
+            </div>
+            <div class="problem-card-title">คลิปสั้น & โซเชียลมีเดีย</div>
+            <div class="problem-metric" style="color: var(--gr-alert);">ฉาบฉวย</div>
+            <p style="font-size: 13px; color: var(--gr-fog);">เสพไว เร้าใจ แต่ขาดความลึก ไม่บอกที่มา และเต็มไปด้วยข้อมูลเท็จหรือความเห็นส่วนตัว</p>
+            <ul class="problem-list">
+              <li>ไม่มีการตรวจสอบแหล่งอ้างอิง (No Provenance)</li>
+              <li>ความรู้กระจัดกระจาย ไม่เชื่อมต่อกันเป็นระบบ</li>
+              <li>ลืมง่าย ไม่เกิดคุณค่าระยะยาวในชีวิต</li>
+            </ul>
+          </div>
+
+          <div class="problem-card gr-chamfer" style="border-top: 3px solid var(--gr-lime); background: rgba(215,255,58,0.03);">
+            <div class="problem-card-badge" style="background: var(--gr-lime); color: #000; font-weight: 700;">
+              THE GRURU ADVANTAGE
+            </div>
+            <div class="problem-card-title" style="color: var(--gr-lime);">GRURU MUSEUM</div>
+            <div class="problem-metric" style="color: var(--gr-lime);">3–5 นาทีจบ</div>
+            <p style="font-size: 13px; color: #FFF;">สนุกแบบแกลเลอรี ล้ำแบบไซไฟ มีหลักฐานตรวจสอบได้ทุกโหนด และจบด้วย Everyday Takeaway</p>
+            <ul class="problem-list">
+              <li><strong>Interactive Knowledge Graph</strong> สำรวจได้เอง</li>
+              <li><strong>Specimen Label</strong> ระบุแหล่งที่มาและรหัสทุกชิ้น</li>
+              <li><strong>Built for Everyday Living</strong> ปรับใช้กับชีวิตจริงได้ทันที</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 03: BRAND POSITIONING & PERCEPTUAL MAP
+           ==================================================================== -->
+      <section class="slide" id="slide-2">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-003 // BRAND ESSENCE</div>
+          <div class="slide-category-tag" style="background: rgba(140,107,255,0.12); color: var(--gr-violet); border: 1px solid var(--gr-violet);">
+            POSITIONING MATRIX
+          </div>
+        </div>
+
+        <h2 class="slide-title">“อดีตคือข้อมูล อนาคตคือเรื่องเล่า”</h2>
+        <div class="slide-subtitle">บุคลิกแบรนด์: ภัณฑารักษ์จากอนาคต (Future Curator) — ฉลาด ไม่เก๊ก ขี้เล่นแต่มีหลักฐานเสมอ</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              ใน Perceptual Map แบรนด์อื่นกระจุกตัวอยู่ในมุมวิชาการที่แห้ง หรือมุมสนุกที่ไร้หลักฐาน — GRURU MUSEUM ปักธงในตำแหน่ง Blue Ocean: <strong>“สนุกแต่มีหลักฐาน”</strong> และ <strong>“เชื่อมโยงเป็นเครือข่ายที่โต้ตอบได้”</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="perceptual-layout">
+          <!-- Interactive 2x2 Perceptual Map -->
+          <div class="perceptual-map-container gr-chamfer">
+            <div class="map-axis-x"></div>
+            <div class="map-axis-y"></div>
+
+            <div class="map-label top">▲ เชื่อมโยงแบบเครือข่าย (Networked & Interactive)</div>
+            <div class="map-label bottom">▼ เล่าแบบเส้นตรง (Linear & Static)</div>
+            <div class="map-label left">◀ วิชาการ / ทางการ (Academic)</div>
+            <div class="map-label right">สนุก / น่าติดตาม (Engaging & Fun) ▶</div>
+
+            <!-- Competitor Points -->
+            <div class="map-point" style="top: 75%; left: 22%;" data-name="Traditional Encyclopedias / Textbooks" data-desc="เน้นวิชาการสูง เล่าแบบเส้นตรงทีละหน้า น่าเบื่อและไม่ดึงดูดคนรุ่นใหม่">
+              <div class="map-dot" style="background: #8A8A9E;"></div>
+              <div class="map-point-title" style="color: #8A8A9E;">百科 / Textbooks</div>
+            </div>
+
+            <div class="map-point" style="top: 35%; left: 30%;" data-name="Wikipedia / Research Databases" data-desc="มีลิงก์เชื่อมโยง แต่ดีไซน์แห้งแล้ง เน้นข้อมูลดิบมากกว่าการเล่าเรื่องเพื่อชีวิตประจำวัน">
+              <div class="map-dot" style="background: #2EE6FF;"></div>
+              <div class="map-point-title" style="color: #2EE6FF;">Wikipedia</div>
+            </div>
+
+            <div class="map-point" style="top: 80%; left: 78%;" data-name="TikTok / Reels Edutainment" data-desc="สนุก น่าติดตามสูง แต่เล่าเป็นเส้นตรงตามอัลกอริทึม และมักขาดการตรวจสอบแหล่งที่มา">
+              <div class="map-dot" style="background: #FF3B4E;"></div>
+              <div class="map-point-title" style="color: #FF3B4E;">Short-form Reels</div>
+            </div>
+
+            <div class="map-point" style="top: 60%; left: 40%;" data-name="Physical Traditional Museums" data-desc="มีวัตถุจริงแต่จำกัดด้วยสถานที่ และมักเล่าเรื่องตามลำดับเวลาห้องต่อห้อง">
+              <div class="map-dot" style="background: #FFC233;"></div>
+              <div class="map-point-title" style="color: #FFC233;">Traditional Museums</div>
+            </div>
+
+            <!-- GRURU Gold Quadrant Core -->
+            <div class="map-point gruru-core" style="top: 25%; left: 76%;" data-name="GRURU MUSEUM (The Sweet Spot)" data-desc="จุดตัดที่สมบูรณ์แบบ: สนุกมีภาพจำแบบ Modern Art ผสาน Knowledge Graph เครือข่ายที่ผู้ใช้สำรวจได้เองและตรวจสอบที่มาได้ 100%">
+              <div class="map-dot"></div>
+              <div class="map-point-title" style="color: var(--gr-lime); font-size: 13px; font-weight: 700;">★ GRURU MUSEUM</div>
+            </div>
+          </div>
+
+          <!-- Positioning Details Panel -->
+          <div class="gr-chamfer" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime); margin-bottom: 6px;">
+                POSITIONING SPECIMEN // INSIGHT
+              </div>
+              <div id="perceptual-point-title" style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--gr-lime);">
+                GRURU MUSEUM (The Sweet Spot)
+              </div>
+              <p id="perceptual-point-desc" style="font-size: 14px; color: var(--theme-text-secondary); line-height: 1.6;">
+                คลิกที่จุดต่าง ๆ ในตารางเพื่อเปรียบเทียบตำแหน่งทางการตลาด: GRURU ผสานความนิ่งของหอศิลป์สมัยใหม่เข้ากับความล้ำของห้องแล็บไซไฟ ทุกเรื่องเชื่อมกันเป็นเครือข่ายข้อมูลที่ตรวจสอบได้ และนำเสนอด้วยภาษาภาพที่จำได้ทันที
+              </p>
+            </div>
+
+            <div style="background: rgba(255,90,31,0.08); border-left: 3px solid var(--gr-ember); padding: 12px; margin-top: 16px;">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-ember); font-weight: 700;">BRAND PROMISE</div>
+              <div style="font-size: 13px;">“ทุกการเยี่ยมชม ต้องได้อย่างน้อยหนึ่งเรื่องกลับไปใช้จริง”</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 04: TARGET AUDIENCE & 3 PERSONAS
+           ==================================================================== -->
+      <section class="slide" id="slide-3">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-004 // DEMOGRAPHIC MATRIX</div>
+          <div class="slide-category-tag" style="background: rgba(52,232,158,0.12); color: var(--gr-success); border: 1px solid var(--gr-success);">
+            AUDIENCE INSIGHT
+          </div>
+        </div>
+
+        <h2 class="slide-title">เจาะกลุ่มเป้าหมาย: คนรุ่นใหม่วัย 22–40 ปี</h2>
+        <div class="slide-subtitle">Insight ร่วม: “อยากรู้ลึก แต่ไม่อยากรู้สึกว่ากำลังนั่งเรียน” — สถาปัตยกรรมหนึ่งเดียว ตอบ 3 ไลฟ์สไตล์</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              แบ่งผู้ใช้เป็น 3 บุคลิกที่มีทางเข้าต่างกัน: <strong>Curious Starter</strong> (ชอบภาพสวยและแชร์การ์ดสั้น) → <strong>Creative Professional</strong> (เจาะลึก Knowledge Graph เพื่อแรงบันดาลใจ) → <strong>Lifelong Learner</strong> (เน้นความน่าเชื่อถือและการนำไปใช้จริง)
+            </div>
+          </div>
+        </div>
+
+        <div class="personas-grid">
+          <!-- Persona 1 -->
+          <div class="persona-card gr-chamfer active">
+            <div class="persona-age-badge">PERSONA 01 // AGE 22–27</div>
+            <div class="persona-name">Curious Starter</div>
+            <p style="font-size: 13px; color: var(--gr-fog);">นักศึกษาจบใหม่ หรือ First Jobber ใช้มือถือเป็นหลัก ชอบภาพที่สวยงามและแชร์ต่อได้ทันที</p>
+            <div class="persona-need-box">
+              <strong style="color: var(--gr-cyan);">สิ่งที่ต้องการ:</strong>
+              <div>• เนื้อหาดูจบใน 3–5 นาที</div>
+              <div>• การ์ดความรู้ 1080×1350 px สำหรับแชร์ IG/TikTok</div>
+              <div>• ประสบการณ์แบบ Mobile-first ไหลลื่น</div>
+            </div>
+          </div>
+
+          <!-- Persona 2 -->
+          <div class="persona-card gr-chamfer">
+            <div class="persona-age-badge" style="color: var(--gr-violet);">PERSONA 02 // AGE 25–34</div>
+            <div class="persona-name">Creative Professional</div>
+            <p style="font-size: 13px; color: var(--gr-fog);">นักออกแบบ มาร์เก็ตเตอร์ ครีเอเตอร์ นักพัฒนา ที่กำลังค้นหาแรงบันดาลใจและข้อมูลอ้างอิง</p>
+            <div class="persona-need-box" style="border-left-color: var(--gr-violet);">
+              <strong style="color: var(--gr-violet);">สิ่งที่ต้องการ:</strong>
+              <div>• Interactive Graph เจาะลึกโหนดข้ามศาสตร์</div>
+              <div>• ระบบบันทึก Collection ส่วนตัว</div>
+              <div>• ดาวน์โหลดชุดข้อมูล (JSON / Graph API) ไปต่อยอด</div>
+            </div>
+          </div>
+
+          <!-- Persona 3 -->
+          <div class="persona-card gr-chamfer">
+            <div class="persona-age-badge" style="color: var(--gr-lime);">PERSONA 03 // AGE 30–40</div>
+            <div class="persona-name">Lifelong Learner</div>
+            <p style="font-size: 13px; color: var(--gr-fog);">คนทำงานและพ่อแม่รุ่นใหม่ อยากรู้ที่มาของสิ่งรอบตัว เช่น สุขภาพ อาหาร และภูมิปัญญาโบราณ</p>
+            <div class="persona-need-box" style="border-left-color: var(--gr-lime);">
+              <strong style="color: var(--gr-lime);">สิ่งที่ต้องการ:</strong>
+              <div>• ความน่าเชื่อถือ แหล่งอ้างอิงตรวจสอบได้ใน 1 คลิก</div>
+              <div>• ตัวอักษรที่อ่านสบายตา (IBM Plex Sans Thai)</div>
+              <div>• บทเรียน Everyday Takeaways ที่ใช้กับครอบครัวได้</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 05: 5-STAGE VALUE ENGINE
+           ==================================================================== -->
+      <section class="slide" id="slide-4">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-005 // PIPELINE FLOW</div>
+          <div class="slide-category-tag" style="background: rgba(215,255,58,0.12); color: var(--gr-lime); border: 1px solid var(--gr-lime);">
+            VALUE ENGINE
+          </div>
+        </div>
+
+        <h2 class="slide-title">ห่วงโซ่การสร้างมูลค่า: จากอดีตสู่อนาคต</h2>
+        <div class="slide-subtitle">พันธกิจ 5 ประการ เรียงตามเส้นทางของความรู้ (The 5-Stage Knowledge Journey)</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              ความรู้ถูกเปลี่ยนผ่าน 5 ขั้นตอนมาตรฐาน: <strong>ขุดค้น (Excavate)</strong> → <strong>ถอดรหัส (Decode)</strong> → <strong>เล่าใหม่ (Retell)</strong> → <strong>เชื่อมโยง (Connect)</strong> → <strong>ประยุกต์ใช้ (Apply)</strong> ให้ทุกนิทรรศการจบด้วยคุณค่าที่จับต้องได้
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-flow-wrapper">
+          <!-- Step 1 -->
+          <div class="pipeline-step-card gr-chamfer">
+            <div class="step-num-badge">01</div>
+            <div class="step-name-th">Excavate</div>
+            <div class="step-name-en">ขุดค้นและคัดสรร</div>
+            <div class="step-desc">ค้นคว้าจากประวัติศาสตร์ วิทยาศาสตร์ ภูมิปัญญา ระบุแหล่งที่มาและรหัส Specimen ทุกชิ้น</div>
+            <div class="pipeline-arrow">➔</div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="pipeline-step-card gr-chamfer">
+            <div class="step-num-badge" style="color: var(--gr-cyan);">02</div>
+            <div class="step-name-th">Decode</div>
+            <div class="step-name-en">ถอดรหัสข้อมูล</div>
+            <div class="step-desc">สกัดข้อมูลดิบเป็นโหนดและความสัมพันธ์ (Entities & Relations) ใน Knowledge Graph</div>
+            <div class="pipeline-arrow">➔</div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="pipeline-step-card gr-chamfer">
+            <div class="step-num-badge" style="color: var(--gr-violet);">03</div>
+            <div class="step-name-th">Retell</div>
+            <div class="step-name-en">เล่าใหม่ด้วยภาพ</div>
+            <div class="step-desc">นิทรรศการดิจิทัล Visual Storytelling ถอดรหัสหัวข้อด้วยโมชัน Scan & Decode ใน 3–5 นาที</div>
+            <div class="pipeline-arrow">➔</div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="pipeline-step-card gr-chamfer">
+            <div class="step-num-badge" style="color: var(--gr-ember);">04</div>
+            <div class="step-name-th">Connect</div>
+            <div class="step-name-en">เชื่อมโยงข้ามมิติ</div>
+            <div class="step-desc">เปิดมุมมองผ่าน Data Booming และ Force-Directed Graph เห็นการเชื่อมข้ามยุคสมัย</div>
+            <div class="pipeline-arrow">➔</div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="pipeline-step-card gr-chamfer" style="background: rgba(215,255,58,0.06); border-color: var(--gr-lime);">
+            <div class="step-num-badge">05</div>
+            <div class="step-name-th" style="color: var(--gr-lime);">Apply</div>
+            <div class="step-name-en">ประยุกต์ใช้ในชีวิต</div>
+            <div class="step-desc">ปิดท้ายด้วยการ์ด Everyday Takeaway บอกวิธีนำไปใช้จริงในชีวิตประจำวันทันที</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 06: KNOWLEDGE GRAPH PERSPECTIVES & ARCHITECTURE
+           ==================================================================== -->
+      <section class="slide" id="slide-5">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-006 // DATA ONTOLOGY</div>
+          <div class="slide-category-tag" style="background: rgba(46,230,255,0.12); color: var(--gr-cyan); border: 1px solid var(--gr-cyan);">
+            KNOWLEDGE ARCHITECTURE
+          </div>
+        </div>
+
+        <h2 class="slide-title">สถาปัตยกรรมกราฟความรู้ & 6 หมวดเรขาคณิต</h2>
+        <div class="slide-subtitle">บูรณาการข้อมูลจาก 4 แหล่งใหญ่ สู่เครือข่ายความรู้ที่เข้าถึงได้ทุกคน (WCAG Color Blind Friendly)</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              รวบรวม Books, Textbooks, Databases, และ Community Knowledge แยก 6 หมวดด้วยคู่ <strong>“สี + ทรงเรขาคณิต”</strong> และเชื่อมด้วย 3 ความสัมพันธ์หลัก: <em>Influenced (เส้นทึบ)</em>, <em>Derived From (เส้นประ)</em>, <em>Used In (เส้นจุด)</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="kg-perspectives-layout">
+          <!-- Left Specs Column -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime); margin-bottom: 8px;">
+                ACCESSIBLE CATEGORIES (SHAPE + COLOR)
+              </div>
+              <div class="kg-category-pills">
+                <div class="cat-pill" style="border-left: 3px solid var(--cat-sci);"><span class="cat-shape" style="color: var(--cat-sci);">○</span> วิทยาศาสตร์ (Science)</div>
+                <div class="cat-pill" style="border-left: 3px solid var(--cat-hist);"><span class="cat-shape" style="color: var(--cat-hist);">⬡</span> ประวัติศาสตร์ (History)</div>
+                <div class="cat-pill" style="border-left: 3px solid var(--cat-tech);"><span class="cat-shape" style="color: var(--cat-tech);">□</span> เทคโนโลยี (Technology)</div>
+                <div class="cat-pill" style="border-left: 3px solid var(--cat-cult);"><span class="cat-shape" style="color: var(--cat-cult);">△</span> วัฒนธรรมและภูมิปัญญา</div>
+                <div class="cat-pill" style="border-left: 3px solid var(--cat-nature);"><span class="cat-shape" style="color: var(--cat-nature);">◇</span> ธรรมชาติและชีวิต</div>
+                <div class="cat-pill" style="border-left: 3px solid var(--cat-art);"><span class="cat-shape" style="color: var(--cat-art);">◎</span> ศิลปะและการออกแบบ</div>
+              </div>
+
+              <div style="margin-top: 14px; font-size: 13px; color: var(--gr-fog);">
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-paper); margin-bottom: 4px;">RELATION TYPES:</div>
+                <div>• <strong>influenced (มีอิทธิพลต่อ):</strong> เส้นทึบ 1px (ทึบ 30%)</div>
+                <div>• <strong>derived_from (พัฒนามาจาก):</strong> เส้นประ (Dashed line)</div>
+                <div>• <strong>used_in (นำไปใช้ใน):</strong> เส้นจุด (Dotted line)</div>
+              </div>
+            </div>
+
+            <div style="background: rgba(23,23,31,0.8); border: 1px solid var(--theme-border); padding: 14px; margin-top: 12px;">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">SELECTED CAPTION:</div>
+              <div id="kg-caption-title" style="font-weight: 700; font-size: 14px; margin: 4px 0;">มุมมองที่ 1: ภาพรวมแนวคิดสถาปัตยกรรม (Conceptual Overview)</div>
+              <div id="kg-caption-desc" style="font-size: 12px; color: var(--gr-fog);">แสดงการรับเข้าจาก Books, Textbooks, Databases, Community สู่แก่นกลาง Knowledge Graph</div>
+            </div>
+          </div>
+
+          <!-- Right Interactive Gallery -->
+          <div class="kg-image-selector">
+            <div class="kg-active-preview gr-chamfer" title="คลิกเพื่อขยายภาพขนาดเต็มใน HUD Lightbox">
+              <img id="kg-active-img" src="assets/images/kg_concept_overview.png" alt="Knowledge Graph Diagram View">
+            </div>
+
+            <!-- 6 Thumbnails from Workspace Folder -->
+            <div class="kg-thumbnails-row">
+              <div class="kg-thumb active" data-src="assets/images/kg_concept_overview.png" title="View 1: Conceptual Overview">
+                <img src="assets/images/kg_concept_overview.png" alt="Thumbnail 1">
+              </div>
+              <div class="kg-thumb" data-src="assets/images/kg_isometric_lab.png" title="View 2: 3D Isometric Sci-Fi Lab">
+                <img src="assets/images/kg_isometric_lab.png" alt="Thumbnail 2">
+              </div>
+              <div class="kg-thumb" data-src="assets/images/kg_hologram_sphere.png" title="View 3: Holographic Sphere">
+                <img src="assets/images/kg_hologram_sphere.png" alt="Thumbnail 3">
+              </div>
+              <div class="kg-thumb" data-src="assets/images/kg_archive_paper.png" title="View 4: Archive Paper Modern Art">
+                <img src="assets/images/kg_archive_paper.png" alt="Thumbnail 4">
+              </div>
+              <div class="kg-thumb" data-src="assets/images/kg_mindmap_plant.png" title="View 5: Mind Map Photosynthesis">
+                <img src="assets/images/kg_mindmap_plant.png" alt="Thumbnail 5">
+              </div>
+              <div class="kg-thumb" data-src="assets/images/kg_unified_map.png" title="View 6: Unified Map of Human Knowledge">
+                <img src="assets/images/kg_unified_map.png" alt="Thumbnail 6">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 07: FEATURE 1 - DATA BOOMING (LIVE INTERACTIVE DEMO)
+           ==================================================================== -->
+      <section class="slide" id="slide-6">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-007 // SIGNATURE FEATURE</div>
+          <div class="slide-category-tag" style="background: rgba(215,255,58,0.12); color: var(--gr-lime); border: 1px solid var(--gr-lime);">
+            INTERACTIVE BOOMING
+          </div>
+        </div>
+
+        <h2 class="slide-title">Data Booming: กราฟระเบิดความรู้แบบนำทาง</h2>
+        <div class="slide-subtitle">เริ่มต้นจาก 1 โหนดกลางจอ → ระเบิดออก 8 ทิศทางด้วยความเร็ว 40ms → ขยายลึกได้ 3 ชั้น</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              แก้ปัญหาความสับสนในกราฟขนาดใหญ่ด้วยการ <strong>“ระเบิดความรู้ทีละชั้น”</strong> — ผู้ใช้สามารถคลิกโหนดศูนย์กลางเพื่อระเบิดโหนดลูก และคลิกต่อเพื่อเจาะลึก 3 ชั้น ทำความเข้าใจเครือข่ายความรู้ได้ใน 3 วินาที
+            </div>
+          </div>
+        </div>
+
+        <div class="booming-demo-layout">
+          <!-- Interactive Booming Stage -->
+          <div class="booming-canvas-stage gr-chamfer" id="booming-stage">
+            <svg class="booming-svg-network" id="booming-svg-lines"></svg>
+            
+            <!-- Center Trigger Node -->
+            <div class="booming-center-node" id="booming-center-btn" title="คลิกเพื่อระเบิดความรู้ชั้นนี้!">
+              <div style="font-size: 10px; color: #000; font-family: var(--font-mono); font-weight:700;">EXPLODE ME</div>
+              <div style="font-size: 13px; font-weight: 700; line-height: 1.2;">GRURU KNOWLEDGE</div>
+              <div style="font-size: 9px; opacity: 0.8; font-family: var(--font-mono);">LEVEL 0</div>
+            </div>
+          </div>
+
+          <!-- Booming HUD Stats & Takeaway -->
+          <div class="booming-stats-hud">
+            <div class="hud-stat-box gr-chamfer">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-fog);">ACTIVE CONNECTIONS</div>
+              <div class="hud-stat-num" id="booming-counter">1</div>
+              <div style="font-size: 12px; color: var(--gr-fog);">โหนดความรู้ที่ถูกเปิดใช้งานในฉากนี้</div>
+            </div>
+
+            <div class="hud-stat-box gr-chamfer" style="background: rgba(215,255,58,0.04); border-color: var(--gr-lime);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">SPECIMEN BREADCRUMB:</div>
+              <div id="booming-breadcrumb" style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; margin: 4px 0;">ROOT > LEVEL 0</div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-ember); margin-top: 10px;">EVERYDAY TAKEAWAY:</div>
+              <div id="booming-takeaway" style="font-size: 13px; line-height: 1.5; color: #FFF;">
+                คลิกโหนดศูนย์กลางหรือโหนดลูกเพื่อระเบิดความรู้และดูบทเรียนชีวิตประจำวัน
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+              <button class="gr-btn-secondary" id="booming-reset-btn" style="flex: 1;">
+                รีเซ็ตกราฟระเบิด // RESET
+              </button>
+              <button class="gr-btn-primary" onclick="window.goToSlide(7)" style="flex: 1;">
+                ไปต่อที่ FULL GRAPH ➔
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 08: FEATURE 2 - INTERACTIVE KNOWLEDGE GRAPH (FORCE CANVAS)
+           ==================================================================== -->
+      <section class="slide" id="slide-7">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-008 // D3 FORCE CANVAS</div>
+          <div class="slide-category-tag" style="background: rgba(46,230,255,0.12); color: var(--gr-cyan); border: 1px solid var(--gr-cyan);">
+            FORCE-DIRECTED MAP
+          </div>
+        </div>
+
+        <h2 class="slide-title">Interactive Knowledge Graph: แผนที่ความรู้ฉบับเต็ม</h2>
+        <div class="slide-subtitle">ระบบฟิสิกส์จำลองแรงดึงดูด (D3-Force Algorithm) บน Canvas ลื่นไหล พร้อมตัวกรองหมวดและไทม์ไลน์</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              แผนที่ความรู้ระดับมืออาชีพสำหรับ Creative Professional: โหนดปรับขนาดตามระดับการเชื่อมโยง (8–32px), เลื่อนเมาส์ตรวจป้าย <strong>Specimen Label</strong>, คลิกเพื่อส่องแสงเส้นทางเชื่อมต่อด้วย <em>Specimen Lime</em> และกรองตามยุคสมัย
+            </div>
+          </div>
+        </div>
+
+        <div class="force-graph-layout">
+          <!-- Canvas Graph Container -->
+          <div class="force-graph-container gr-chamfer">
+            <!-- Floating Graph Filter Bar -->
+            <div class="graph-floating-controls">
+              <button class="hud-btn kg-filter-btn active" data-cat="all">ALL</button>
+              <button class="hud-btn kg-filter-btn" data-cat="sci" style="color: var(--cat-sci);">SCI ○</button>
+              <button class="hud-btn kg-filter-btn" data-cat="hist" style="color: var(--cat-hist);">HIST ⬡</button>
+              <button class="hud-btn kg-filter-btn" data-cat="tech" style="color: var(--cat-tech);">TECH □</button>
+              <button class="hud-btn kg-filter-btn" data-cat="cult" style="color: var(--cat-cult);">CULT △</button>
+              <button class="hud-btn kg-filter-btn" data-cat="nature" style="color: var(--cat-nature);">BIO ◇</button>
+              <button class="hud-btn kg-filter-btn" data-cat="art" style="color: var(--cat-art);">ART ◎</button>
+
+              <div style="height: 18px; width: 1px; background: var(--theme-border); margin: 0 4px;"></div>
+              
+              <input type="range" id="kg-era-slider" min="0" max="5" value="0" style="width: 80px; accent-color: var(--gr-lime);" title="Filter by Era">
+              <span id="kg-era-label" style="font-family: var(--font-mono); font-size: 10px; color: var(--gr-lime);">ERA: ALL</span>
+
+              <input type="text" id="kg-search-input" placeholder="ค้นหาโหนด..." style="background: rgba(0,0,0,0.5); border: 1px solid var(--theme-border); color: #FFF; font-family: var(--font-mono); font-size: 11px; padding: 4px 8px; width: 90px;">
+            </div>
+
+            <!-- HTML5 Force Canvas -->
+            <canvas id="kg-canvas"></canvas>
+          </div>
+
+          <!-- Specimen Node Inspector HUD -->
+          <div class="node-inspector-card gr-chamfer">
+            <div>
+              <div class="specimen-label" id="inspector-code">GRM-150BC-TECH-001</div>
+              <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin: 8px 0 4px; color: #FFF;" id="inspector-title">
+                กลไกแอนติคิเธียรา (Antikythera)
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <span class="slide-category-tag" id="inspector-category" style="background: rgba(140,107,255,0.2); color: var(--gr-violet);">
+                  TECHNOLOGY
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-fog);" id="inspector-era">
+                  Ancient Era // Year -150
+                </span>
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--theme-border); padding-top: 12px;">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">EVERYDAY TAKEAWAY:</div>
+              <p id="inspector-takeaway" style="font-size: 13px; color: #FFF; line-height: 1.5; margin-top: 4px;">
+                ต้นแบบคอมพิวเตอร์แอนะล็อกชิ้นแรกของมนุษยชาติ สะท้อนการคำนวณตำแหน่งดวงดาวด้วยเฟืองทด 37 ชิ้น
+              </p>
+            </div>
+
+            <div style="border-top: 1px solid var(--theme-border); padding-top: 12px; font-size: 12px; color: var(--gr-fog);">
+              <div style="font-family: var(--font-mono); font-size: 10px; color: var(--gr-ember);">PROVENANCE SOURCES:</div>
+              <div>• National Archaeological Museum, Athens</div>
+              <div>• Nature Journal Archive (Vol 444)</div>
+            </div>
+
+            <div style="margin-top: auto; font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime); background: rgba(215,255,58,0.08); padding: 8px; border: 1px dashed var(--gr-lime);">
+              [TIP] ลากโหนดเพื่อจัดตำแหน่ง / คลิกโหนดเพื่อส่องเส้นเชื่อม
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 09: DESIGN SYSTEM & BRAND TOKENS
+           ==================================================================== -->
+      <section class="slide" id="slide-8">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-009 // DESIGN SYSTEM</div>
+          <div class="slide-category-tag" style="background: rgba(255,90,31,0.12); color: var(--gr-ember); border: 1px solid var(--gr-ember);">
+            PAST WARM × FUTURE ELECTRIC
+          </div>
+        </div>
+
+        <h2 class="slide-title">ระบบการออกแบบ: สุนทรียภาพแห่ง Future Archaeology</h2>
+        <div class="slide-subtitle">กฎสัดส่วนสี 70–20–10, การตัดมุม 45° แบบ HUD, ฟอนต์ 3 ตระกูล และมาตรฐาน WCAG AA</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              วางระบบ Design Tokens ที่รัดกุม: <strong>70%</strong> Void Black & Archive Paper, <strong>20%</strong> Lab Graphite & Grid Line, <strong>10%</strong> Specimen Lime & Ember Orange. ความคมชัดสีผ่านเกณฑ์ WCAG AA ทั้งหมด (Lime สูงถึง 17:1)
+            </div>
+          </div>
+        </div>
+
+        <div class="design-system-grid">
+          <!-- Column 1: Base Palette -->
+          <div class="color-token-card gr-chamfer">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">70% BASE SYSTEM</div>
+            <div class="color-swatch" style="background: #0B0B0F; color: #FFF; border: 1px solid #2C2C3A;">Void Black #0B0B0F</div>
+            <div class="color-swatch" style="background: #17171F; color: #FFF; border: 1px solid #2C2C3A;">Lab Graphite #17171F</div>
+            <div class="color-swatch" style="background: #F2EDE3; color: #000;">Archive Paper #F2EDE3</div>
+            <div style="font-size: 12px; color: var(--gr-fog);">สีดำแบบห้องแล็บไซไฟ ตัดด้วยสีขาวกระดาษจดหมายเหตุโบราณ</div>
+          </div>
+
+          <!-- Column 2: Brand Accents -->
+          <div class="color-token-card gr-chamfer">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">10% BRAND ACCENTS</div>
+            <div class="color-swatch" style="background: #D7FF3A; color: #000;">Specimen Lime #D7FF3A</div>
+            <div class="color-swatch" style="background: #FF5A1F; color: #FFF;">Ember Orange #FF5A1F</div>
+            <div class="color-swatch" style="background: #8C6BFF; color: #FFF;">Quantum Violet #8C6BFF</div>
+            <div class="color-swatch" style="background: #2EE6FF; color: #000;">Hologram Cyan #2EE6FF</div>
+          </div>
+
+          <!-- Column 3: Patterns & Shapes -->
+          <div class="color-token-card gr-chamfer">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">SIGNATURE PATTERNS</div>
+            <div style="font-size: 13px;">• <strong>Specimen Grid:</strong> ตาราง 48px + พิกัด</div>
+            <div style="font-size: 13px;">• <strong>45° Chamfer:</strong> ตัดมุม 12px บนการ์ด</div>
+            <div style="font-size: 13px;">• <strong>Time Warp Gradient:</strong> linear-gradient(#FF5A1F, #8C6BFF)</div>
+            <div style="font-size: 13px;">• <strong>Hard Shadow:</strong> 4px 4px 0 #FF5A1F</div>
+            <div style="font-size: 13px;">• <strong>Scanline & Glitch:</strong> เส้นกวาดตรวจจับ</div>
+          </div>
+
+          <!-- Column 4: Typography -->
+          <div class="color-token-card gr-chamfer">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">3 FONT SYSTEM</div>
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700;">Chakra Petch</div>
+              <div style="font-size: 11px; color: var(--gr-fog);">หัวเรื่อง / Sci-Fi Geometry (600–700)</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-body); font-size: 15px;">IBM Plex Sans Thai</div>
+              <div style="font-size: 11px; color: var(--gr-fog);">เนื้อหา / Scientific Editorial (1.7 line-height)</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 13px;">IBM Plex Mono // GRM-2026</div>
+              <div style="font-size: 11px; color: var(--gr-fog);">รหัสพิกัด ป้าย Specimen ตัวเลข</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 10: BUILT FOR EVERYDAY LIVING & EVERYDAY LAB
+           ==================================================================== -->
+      <section class="slide" id="slide-9">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-010 // EVERYDAY LAB</div>
+          <div class="slide-category-tag" style="background: rgba(52,232,158,0.12); color: var(--gr-success); border: 1px solid var(--gr-success);">
+            EVERYDAY LIVING
+          </div>
+        </div>
+
+        <h2 class="slide-title">Built for Everyday Living: ภูมิปัญญาที่ใช้ได้จริง</h2>
+        <div class="slide-subtitle">การ์ด Everyday Takeaway ขนาด 1080×1350 px ที่สร้าง Viral Loop บน Social Media</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              เปลี่ยนพิพิธภัณฑ์จาก “สถานที่เก็บอดีต” สู่ <strong>“โซลูชันสำหรับชีวิตปัจจุบัน”</strong> — ทุกนิทรรศการจบด้วยการ์ดสรุปที่นำไปปรับพฤติกรรม สุขภาพ การนอน และงานออกแบบได้ทันที ขับเคลื่อน Organic Growth ด้วยการแชร์ของผู้ใช้
+            </div>
+          </div>
+        </div>
+
+        <div class="everyday-living-layout">
+          <!-- Left: Lifestyle Lab Visual -->
+          <div class="gr-chamfer" style="overflow: hidden; height: 100%; max-height: 440px; position: relative;">
+            <img src="assets/images/everyday_lab_experience.jpg" alt="Everyday Lab Experience" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="hero-visual-overlay">
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime);">HALL 03 // EVERYDAY LAB</div>
+                <div style="font-size: 12px; color: #FFF;">Human-Centric Innovation: Ancient Wisdom Meets Modern Lifestyle</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Social Takeaway Card Mockup -->
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div class="takeaway-card-mockup gr-chamfer">
+              <!-- Card Top -->
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2C2C3A; padding-bottom: 8px;">
+                  <span style="font-family: var(--font-mono); font-size: 10px; color: var(--gr-lime);">GRURU // EVERYDAY TAKEAWAY</span>
+                  <span style="font-family: var(--font-mono); font-size: 10px; color: var(--gr-fog);">1080 × 1350 PX</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--gr-ember); margin-top: 10px;">
+                  SPECIMEN: GRM-1490-ART-004
+                </div>
+                <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #FFF; margin: 4px 0;">
+                  การนอนแบบ 2 ช่วง (Biphasic Sleep) ของดาวินชี
+                </div>
+              </div>
+
+              <!-- Card Core Action -->
+              <div style="background: rgba(215,255,58,0.08); border-left: 3px solid var(--gr-lime); padding: 14px; margin: 12px 0;">
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime); font-weight: 700;">ACTION FOR TODAY:</div>
+                <p style="font-size: 13px; color: #FFF; line-height: 1.5; margin-top: 4px;">
+                  หากตื่นกลางดึก อย่าเพิ่งหยิบมือถือ ให้ใช้ช่วงเวลา “Dorveille” 45 นาที ในการจดบันทึกไอเดียหรือฟังเสียงธรรมชาติ สมองจะหลั่งฮอร์โมนสร้างสรรค์สูงสุด
+                </p>
+              </div>
+
+              <!-- Card Bottom -->
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 10px; color: var(--gr-fog); border-top: 1px solid #2C2C3A; padding-top: 8px;">
+                  <span>SOURCES: CODEX ATLANTICUS</span>
+                  <span style="color: var(--gr-lime);">GRURU.MUSEUM</span>
+                </div>
+              </div>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-fog); margin-top: 8px;">
+              [ตัวอย่างการ์ดความรู้ที่ผู้ใช้กดเซฟและแชร์ลง Instagram Stories ได้ใน 1 คลิก]
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 11: IMPLEMENTATION ROADMAP & ANTIGRAVITY EXECUTION
+           ==================================================================== -->
+      <section class="slide" id="slide-10">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-011 // SPRINT TIMELINE</div>
+          <div class="slide-category-tag" style="background: rgba(140,107,255,0.12); color: var(--gr-violet); border: 1px solid var(--gr-violet);">
+            AGILE ROADMAP
+          </div>
+        </div>
+
+        <h2 class="slide-title">แผนการดำเนินงาน 4 รอบ & ความเร็วด้วย Antigravity</h2>
+        <div class="slide-subtitle">การพัฒนาด้วย Google Antigravity AI ควบคุมด้วย Workspace Rules เพื่อคุณภาพและความเร็วสูงสุด</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              แบ่งการส่งมอบเป็น 4 Sprint ชัดเจน: <strong>Sprint 1</strong> Design Tokens & Style Guide → <strong>Sprint 2</strong> HUD Components → <strong>Sprint 3</strong> 4 Exhibition Halls → <strong>Sprint 4</strong> D3 Force Graph Canvas. ส่งมอบได้เร็วกว่าเดิม 4 เท่า
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-timeline-grid">
+          <!-- Sprint 1 -->
+          <div class="roadmap-sprint-card gr-chamfer active-sprint">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime); margin-bottom: 4px;">SPRINT 01 // WEEKS 1–2</div>
+            <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 8px;">Tokens & Style Guide</div>
+            <p style="font-size: 12px; color: var(--gr-fog); margin-bottom: 12px;">เซ็ตอัปโครงสร้าง Next.js + TypeScript + Tailwind CSS พร้อมแปลงสีเป็น CSS Variables</p>
+            <ul style="list-style: none; font-size: 12px; color: var(--theme-text-primary); display: flex; flex-direction: column; gap: 6px;">
+              <li>✓ บันทึก Workspace Rule ใน .agent/rules/</li>
+              <li>✓ ฟอนต์ Chakra Petch & IBM Plex</li>
+              <li>✓ ตรวจสอบ WCAG AA ใน Style Guide</li>
+            </ul>
+          </div>
+
+          <!-- Sprint 2 -->
+          <div class="roadmap-sprint-card gr-chamfer">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-cyan); margin-bottom: 4px;">SPRINT 02 // WEEKS 3–4</div>
+            <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 8px;">Components & HUD</div>
+            <p style="font-size: 12px; color: var(--gr-fog); margin-bottom: 12px;">สร้างคอมโพเนนต์การ์ดตัดมุม Specimen Grid และโมชันสแกนตัวอักษร 600ms</p>
+            <ul style="list-style: none; font-size: 12px; color: var(--theme-text-primary); display: flex; flex-direction: column; gap: 6px;">
+              <li>✓ การ์ด 45° Chamfer Polygon</li>
+              <li>✓ โมชัน Scan → Decode → Connect</li>
+              <li>✓ Specimen Label Template System</li>
+            </ul>
+          </div>
+
+          <!-- Sprint 3 -->
+          <div class="roadmap-sprint-card gr-chamfer">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-violet); margin-bottom: 4px;">SPRINT 03 // WEEKS 5–6</div>
+            <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 8px;">The 4 Halls Pages</div>
+            <p style="font-size: 12px; color: var(--gr-fog); margin-bottom: 12px;">พัฒนาหน้า Home, Exhibitions, Data Booming, และ Everyday Lab ครบวงจร</p>
+            <ul style="list-style: none; font-size: 12px; color: var(--theme-text-primary); display: flex; flex-direction: column; gap: 6px;">
+              <li>✓ HALL 01 Exhibitions (Visual Stories)</li>
+              <li>✓ HALL 02 Data Booming Engine</li>
+              <li>✓ HALL 03 Everyday Lab Social Cards</li>
+            </ul>
+          </div>
+
+          <!-- Sprint 4 -->
+          <div class="roadmap-sprint-card gr-chamfer">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-ember); margin-bottom: 4px;">SPRINT 04 // WEEKS 7–8</div>
+            <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 8px;">D3 Canvas & Launch</div>
+            <p style="font-size: 12px; color: var(--gr-fog); margin-bottom: 12px;">ปรับแต่ง D3-force บน Canvas 50+ โหนด พร้อมระบบ Search และ Minimap</p>
+            <ul style="list-style: none; font-size: 12px; color: var(--theme-text-primary); display: flex; flex-direction: column; gap: 6px;">
+              <li>✓ ปรับแต่งความลื่นไหล 60 FPS บนมือถือ</li>
+              <li>✓ รองรับ Keyboard Navigation</li>
+              <li>✓ Soft Launch & Community Testing</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 12: EXECUTIVE SUMMARY & STRATEGIC DECISION
+           ==================================================================== -->
+      <section class="slide" id="slide-11">
+        <div class="slide-top-meta">
+          <div class="specimen-label">GRM-2026-EXEC-012 // STRATEGIC ASK</div>
+          <div class="slide-category-tag" style="background: rgba(215,255,58,0.12); color: var(--gr-lime); border: 1px solid var(--gr-lime);">
+            BOARD DECISION
+          </div>
+        </div>
+
+        <h2 class="slide-title">สรุปการนำเสนอ & ข้อเสนอแนะเชิงกลยุทธ์</h2>
+        <div class="slide-subtitle">การลงทุนในโครงสร้างความรู้ที่มีคูเมืองสูง (High Moat) และการเติบโตแบบยั่งยืน</div>
+
+        <div class="takeaway-3sec-box">
+          <div class="takeaway-icon">⚡</div>
+          <div class="takeaway-content">
+            <div class="takeaway-heading">3-Second Executive Summary</div>
+            <div class="takeaway-text">
+              GRURU MUSEUM มีความพร้อม 100% ทั้งด้านคอนเซปต์ สถาปัตยกรรมข้อมูล และระบบดีไซน์ — <strong>ขออนุมัติเริ่ม Sprint 1</strong> เพื่อสร้าง Style Guide และนิทรรศการต้นแบบ มุ่งสู่เป้าหมาย 100,000 Active Explorers ในไตรมาสแรก
+            </div>
+          </div>
+        </div>
+
+        <div class="exec-summary-grid">
+          <div>
+            <div class="exec-pillar-card gr-chamfer">
+              <div class="pillar-icon-box">01</div>
+              <div>
+                <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: #FFF;">สินทรัพย์ความรู้ที่มีคูเมืองป้องกันสูง (Knowledge Moat)</div>
+                <div style="font-size: 13px; color: var(--gr-fog); margin-top: 4px;">Knowledge Graph ที่ผ่านการตรวจสอบแหล่งที่มา เชื่อมโยงข้ามศาสตร์ และต่อยอดเป็นสิทธิบัตรข้อมูลได้</div>
+              </div>
+            </div>
+
+            <div class="exec-pillar-card gr-chamfer">
+              <div class="pillar-icon-box" style="border-color: var(--gr-cyan); color: var(--gr-cyan);">02</div>
+              <div>
+                <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: #FFF;">ความเหนียวแน่นของผู้ใช้ผ่าน Data Booming (Viral Retention)</div>
+                <div style="font-size: 13px; color: var(--gr-fog); margin-top: 4px;">การระเบิดความรู้ที่เล่นสนุกและเข้าใจง่ายใน 3 วินาที ผสาน Everyday Takeaway ที่กระตุ้นการบอกต่อ</div>
+              </div>
+            </div>
+
+            <div class="exec-pillar-card gr-chamfer">
+              <div class="pillar-icon-box" style="border-color: var(--gr-violet); color: var(--gr-violet);">03</div>
+              <div>
+                <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: #FFF;">โอกาสทางธุรกิจและการเป็นพันธมิตร (Ecosystem Partnerships)</div>
+                <div style="font-size: 13px; color: var(--gr-fog); margin-top: 4px;">ความร่วมมือกับสถาบันการศึกษา แบรนด์สุขภาพ และการเปิด API สำหรับ Creative Professionals</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decision Callout Box -->
+          <div class="gr-chamfer" style="padding: 24px; background: rgba(215,255,58,0.05); border: 2px solid var(--gr-lime); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gr-lime); font-weight: 700; letter-spacing: 0.1em;">
+                RECOMMENDED ACTION
+              </div>
+              <div style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin: 8px 0; color: #FFF;">
+                อนุมัติเริ่ม Sprint 1 ทันที
+              </div>
+              <p style="font-size: 14px; color: var(--gr-fog); line-height: 1.6;">
+                เริ่มต้นพัฒนา Design Tokens, Style Guide, และสเปก Knowledge Graph ร่วมกับ Google Antigravity เพื่อส่งมอบงานตามกรอบเวลา 8 สัปดาห์
+              </p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+              <button class="gr-btn-primary" onclick="alert('อนุมัติการดำเนินโครงการ GRURU MUSEUM เรียบร้อยแล้ว! ระบบกำลังเริ่มดำเนินการตาม Workspace Rules ใน Sprint 1...')">
+                อนุมัติโครงการ // APPROVE SPRINT 1
+              </button>
+              <button class="gr-btn-secondary" onclick="window.print()">
+                พิมพ์เอกสารนำเสนอ // PRINT SUMMARY
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom App Footer / Navigation Controls -->
+    <footer class="app-footer">
+      <div class="footer-nav-buttons">
+        <button class="nav-arrow-btn" id="prev-slide-btn" title="Previous Slide (Left Arrow)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="nav-arrow-btn" id="next-slide-btn" title="Next Slide (Right Arrow or Space)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Centered Dots Indicator -->
+      <div class="slide-dots-container" id="slide-dots"></div>
+
+      <!-- Shortcut Hint -->
+      <div style="font-family: var(--font-mono); font-size: 10px; color: var(--gr-fog); text-transform: uppercase;">
+        KEYS: [←/→] NAV // [O] OVERVIEW // [N] NOTES // [F] FULLSCREEN
+      </div>
+    </footer>
+
+    <!-- Speaker Notes Drawer (Executive Sheet) -->
+    <aside class="notes-drawer" id="notes-drawer">
+      <div class="notes-drawer-title">
+        <span id="notes-title">EXECUTIVE TALKING POINTS</span>
+        <button class="hud-btn" id="notes-close-btn" style="padding: 2px 8px;">✕</button>
+      </div>
+      <div class="notes-drawer-content" id="notes-content">
+        เนื้อหาบรรยายประกอบสำหรับผู้บริหาร...
+      </div>
+    </aside>
+
+    <!-- Overview Slide Sorter Grid Modal -->
+    <div class="overview-modal" id="overview-modal">
+      <div class="overview-header">
+        <div class="overview-title">
+          GRURU MUSEUM // SLIDE INDEX
+          <span style="font-size: 12px; font-family: var(--font-mono); color: var(--gr-fog); margin-left: 12px;">(12 EXECUTIVE SLIDES)</span>
+        </div>
+        <button class="hud-btn" id="overview-close-btn">✕ CLOSE (ESC)</button>
+      </div>
+      <div class="overview-grid" id="overview-grid"></div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="image-lightbox" id="image-lightbox">
+      <button class="lightbox-close-btn" id="lightbox-close">✕</button>
+      <img src="" alt="Enlarged Diagram View" class="lightbox-content" id="lightbox-img">
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
